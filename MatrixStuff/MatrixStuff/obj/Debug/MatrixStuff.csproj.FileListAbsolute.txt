@@ -1,0 +1,7 @@
+C:\Users\basti\source\repos\MatrixStuff\MatrixStuff\bin\Debug\MatrixStuff.exe.config
+C:\Users\basti\source\repos\MatrixStuff\MatrixStuff\bin\Debug\MatrixStuff.exe
+C:\Users\basti\source\repos\MatrixStuff\MatrixStuff\bin\Debug\MatrixStuff.pdb
+C:\Users\basti\source\repos\MatrixStuff\MatrixStuff\obj\Debug\MatrixStuff.csprojAssemblyReference.cache
+C:\Users\basti\source\repos\MatrixStuff\MatrixStuff\obj\Debug\MatrixStuff.csproj.CoreCompileInputs.cache
+C:\Users\basti\source\repos\MatrixStuff\MatrixStuff\obj\Debug\MatrixStuff.exe
+C:\Users\basti\source\repos\MatrixStuff\MatrixStuff\obj\Debug\MatrixStuff.pdb
