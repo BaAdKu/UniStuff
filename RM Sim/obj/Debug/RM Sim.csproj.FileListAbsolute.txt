@@ -1,0 +1,7 @@
+D:\Repos\Uni stuff\UniStuff\RM Sim\bin\Debug\ConsoleApp2.exe.config
+D:\Repos\Uni stuff\UniStuff\RM Sim\bin\Debug\ConsoleApp2.exe
+D:\Repos\Uni stuff\UniStuff\RM Sim\bin\Debug\ConsoleApp2.pdb
+D:\Repos\Uni stuff\UniStuff\RM Sim\obj\Debug\RM Sim.csprojAssemblyReference.cache
+D:\Repos\Uni stuff\UniStuff\RM Sim\obj\Debug\RM Sim.csproj.CoreCompileInputs.cache
+D:\Repos\Uni stuff\UniStuff\RM Sim\obj\Debug\ConsoleApp2.exe
+D:\Repos\Uni stuff\UniStuff\RM Sim\obj\Debug\ConsoleApp2.pdb
