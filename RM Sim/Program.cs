@@ -9,7 +9,6 @@ namespace RMSim
     {
         static void Main(string[] args)
         {
-
             RM rm = new RM();
             List<string> inputfiles=new List<string>();
             List<string> parsed=new List<string>();
@@ -44,7 +43,6 @@ namespace RMSim
             }
         }
     }
-
     class RM
     {
         //private int pc;
@@ -178,7 +176,6 @@ namespace RMSim
             }
             Console.WriteLine("Program ended");
             Console.ReadKey();
-
         }
     }
 }
