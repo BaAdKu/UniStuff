@@ -14,28 +14,33 @@ namespace RMSim
             List<string> inputfiles=new List<string>();
             List<string> parsed=new List<string>();
             string line;
-            try
+            
+            while (true)
             {
-                using (StreamReader sr = new StreamReader("File.txt"))
+                Console.WriteLine("type any letter to exit");            
+                try
                 {
-                    while ((line = sr.ReadLine()) != null)
+                    using (StreamReader sr = new StreamReader("File.txt"))
                     {
-                        if (line.Length % 4 == 0)
+                        while ((line = sr.ReadLine()) != null)
                         {
-                            for (int i = 0; i < line.Length; i += 2)
+                            if (line.Length % 4 == 0)
                             {
-                                parsed.Add(line.Substring(i, 2));
+                                for (int i = 0; i < line.Length; i += 2)
+                                {
+                                    parsed.Add(line.Substring(i, 2));
+                                }
                             }
+                            rm.ParseCommands(parsed.ToArray());
                         }
-                        rm.ParseCommands(parsed.ToArray());
                     }
                 }
-            }
-            catch(Exception e)
-            {
-                Console.WriteLine("File not found or couldn't be read");
-                Console.WriteLine(e);
-                Console.ReadKey();
+                catch (Exception e)
+                {
+                    Console.WriteLine("File not found or couldn't be read");
+                    Console.WriteLine(e);
+                    Console.ReadKey();
+                }
             }
         }
     }
@@ -53,19 +58,20 @@ namespace RMSim
         {
             {"01", RMCommands.ADD },
             {"02", RMCommands.SUB },
-            {"03", RMCommands.DIV },
-            {"04", RMCommands.LDA },
-            {"05", RMCommands.LDK },
-            {"06", RMCommands.STA },
-            {"07", RMCommands.INP },
-            {"08", RMCommands.OUT },
-            {"09", RMCommands.HLT },
-            {"0A", RMCommands.JMP },
-            {"0B", RMCommands.JEZ },
-            {"0C", RMCommands.JNE },
-            {"0D", RMCommands.JLZ },
-            {"0E", RMCommands.JLE },
-            {"0F", RMCommands.JGZ },
+            {"03", RMCommands.MUL },
+            {"04", RMCommands.DIV },
+            {"05", RMCommands.LDA },
+            {"06", RMCommands.LDK },
+            {"07", RMCommands.STA },
+            {"08", RMCommands.INP },
+            {"09", RMCommands.OUT },
+            {"0A", RMCommands.HLT },
+            {"0B", RMCommands.JMP },
+            {"0C", RMCommands.JEZ },
+            {"0D", RMCommands.JNE },
+            {"0E", RMCommands.JLZ },
+            {"0F", RMCommands.JLE },
+            {"10", RMCommands.JGZ },
             {"11", RMCommands.JGE }
         };
 
@@ -101,14 +107,14 @@ namespace RMSim
                             registers[0] = registers[int.Parse(commandlist[i + 1])];
                             break;
                         case RMCommands.LDK:
-                            registers[0] +=int.Parse(commandlist[i + 1]);
+                            registers[0] =int.Parse(commandlist[i + 1]);
                             break;
                         case RMCommands.STA:
                             registers[int.Parse(commandlist[i + 1])] = registers[0];
                             break;
                         case RMCommands.INP:
                             Console.WriteLine("Input required");
-                            registers[0] = int.Parse(Console.ReadLine());
+                            registers[int.Parse(commandlist[i+1])] = int.Parse(Console.ReadLine());
                             break;
                         case RMCommands.OUT:
                             Console.WriteLine(registers[int.Parse(commandlist[i + 1])]);
@@ -171,6 +177,8 @@ namespace RMSim
                 }
             }
             Console.WriteLine("Program ended");
+            Console.ReadKey();
+
         }
     }
 }
