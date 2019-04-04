@@ -12,14 +12,17 @@ namespace MaxPartSum2D
             Matrix2d matr = new Matrix2d(10, 10);
 
             matr.RandomizeContent();
-            Console.WriteLine(matr.MaxSum2D().ToString());
+            matr.PrintMatrix();
+            Console.WriteLine(matr.MaxSum2D().ToString()+" for the upper limit of "+ matr.finalTop + " for the lower limit of " 
+                + matr.finalBot + " for the left limit of " + matr.finalLeft + " for the right limit of " + matr.finalRight);
+            Console.ReadKey();
         }
     }
 
 
     class Matrix2d
     {
-        private List<List<int>> Matrix;
+     int[,] Matrix;
         private int Row;
         private int Column;
         public int finalTop;
@@ -33,11 +36,7 @@ namespace MaxPartSum2D
 
             Row = row;
             Column = column;
-            Matrix = new List<List<int>>(row);
-            for (int i = 0; i < row; i++)
-            {
-                Matrix.Add(new List<int>(column));
-            }
+            Matrix = new int[row, column];
         }
 
         public void RandomizeContent()
@@ -46,8 +45,21 @@ namespace MaxPartSum2D
             {
                 for (int j = 0; j < Column; j++)
                 {
-                    Matrix[i][j] = rand.Next(-10, 10);
+                    Matrix[i,j] = rand.Next(-10, 10);
                 }
+            }
+        }
+
+
+        public void PrintMatrix()
+        {
+            for (int i = 0; i < Column; i++)
+            {
+                for (int j = 0; j < Row; j++)
+                {
+                    Console.Write(Matrix[i, j] + "\t");
+                }
+                Console.WriteLine();
             }
         }
 
@@ -121,7 +133,7 @@ namespace MaxPartSum2D
 
                     for (i = 0; i < Row; i++)
                     {
-                        temp[i] += Matrix[i][right];
+                        temp[i] += Matrix[i,right];
                     }
 
                     sum = Kadane(temp, start: ref up, finish: ref down);
