@@ -10,6 +10,32 @@ namespace MergeSort
     {
         static void Main(string[] args)
         {
+            Random rand = new Random();
+            while (true)
+            {
+                int[] arr = new int[rand.Next(300)];
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    arr[i] = rand.Next(1000);
+                }
+                for (int j = 0; j <arr.Length; j++)
+                {
+                    Console.Write(arr[j] + " ");
+                }
+                Console.WriteLine();
+                Console.WriteLine();
+                MergeSort sort = new MergeSort(arr);
+                sort.sort();
+
+                for (int j = 0; j < sort.array.Length; j++)
+                {
+                    Console.Write(sort.array[j] + " ");
+                }
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.ReadKey();
+                arr = null;
+            }
         }
     }
 
@@ -31,7 +57,7 @@ namespace MergeSort
         {
             sort(0, array.Length - 1);
         }
-        public void sort(int f, int l )
+        public void sort(int f, int l)
         {
             if (f < l)
             {
@@ -51,9 +77,32 @@ namespace MergeSort
 
             for (i = 0; i < n; i++)
             {
-                if(a1f<a1l)
+                if (a1f <= a1l)
+                {
+                    if (a2f <= a2l)
+                    {
+                        if (array[a1f] <= array[a2f])
+                        {
+                            arrnew[i] = array[a1f++];
+                        }else
+                        {
+                            arrnew[i] = array[a2f++];
+                        }
+                    }else
+                    {
+                        arrnew[i] = array[a1f++];
+                    }
+                }else
+                {
+                    arrnew[i] = array[a2f++];
+                }
             }
-            
+            for ( i= 0; i < n; i++)
+            {
+                array[f + i] = arrnew[i];
+            }
+            arrnew = null;
+
         }
     }
 }
