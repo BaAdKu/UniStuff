@@ -56,7 +56,7 @@ namespace Ex23
 
         int it_func(int n, int m)
         {
-            int[] Stack = new int[3000];
+            int[] Stack = new int[300000];
             int stackpointer = 0;
             Stack[0] = n;
             Stack[1] = m;
