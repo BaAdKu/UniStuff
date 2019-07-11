@@ -9,12 +9,12 @@ SkipListClass::SkipListClass(int max)
 	srand(time(NULL));
 	MaxHeight = max;
 
-	startStack = &SkipListStack(MaxHeight, 0, true, false);
-	endStack = &SkipListStack(MaxHeight, 0, false, true);
+	startStack = SkipListStack(MaxHeight, 0, true, false);
+	endStack = SkipListStack(MaxHeight, 0, false, true);
 	for (int j = 0; j < MaxHeight; j++)
 	{
-		startStack->Elems.at(j) = endStack;
-		endStack->Elems.at(j) = nullptr;
+		startStack.Elems.at(j) = &endStack;
+		endStack.Elems.at(j) = nullptr;
 	}
 }
 
@@ -33,71 +33,41 @@ void SkipListClass::Add(int* values, int cap)
 
 void SkipListClass::Add(int val)
 {
-
-	/*int currHeight = (rand() % MaxHeight)+1;
-	SkipListStack insertion = SkipListStack(currHeight, val, false);
-	if (!Check(val)) {
-		if (List.at(1).isStartOrEnd)
-		{
-			List.insert(List.begin() + 1, insertion);
-			for (int i = 0; i < currHeight; i++)
-			{
-				List.at(0).Elems.at(i) = &List.at(1);
-				List.at(1).Elems.at(i) = &List.at(2);
-			}
-		}
-		else
-		{
-			int CurrStack = 0;
-			for (int i = MaxHeight - 1; i >= 0; )
-			{
-
-				if (List.at(CurrStack).Elems.at(i)->isStartOrEnd || List.at(CurrStack).Elems.at(i)->Value > val)
-				{
-					if (i < currHeight)
-					{
-						insertion.Elems.at(i) = List.at(CurrStack).Elems.at(i);
-						List.at(CurrStack).Elems.at(i) = &insertion;
-					}
-					i--;
-				}
-				else
-				{
-					CurrStack = SearchVal(List.at(CurrStack).Elems.at(i)->Value);
-					break;
-				}
-			}
-			if (CurrStack == 0)
-				CurrStack = 1;
-			List.insert(List.begin() + CurrStack, insertion);
-		}
-	}*/
-
-	SkipListStack* CurrStack = startStack;
-	SkipListStack insertion = SkipListStack(rand() % MaxHeight, val, false, false);
+	SkipListStack* CurrStack = &startStack;
+	SkipListStack* insertion = new SkipListStack(rand() % MaxHeight+1, val, false, false);
 	int CurrPointer = MaxHeight - 1;
 
 	while (true)
 	{
 		if (CurrStack->Elems.at(CurrPointer)->isEnd)
 		{
+			if (CurrPointer < insertion->Height)
+			{
+				insertion->Elems.at(CurrPointer) = CurrStack->Elems.at(CurrPointer);
+				CurrStack->Elems.at(CurrPointer) = insertion;
+			}
 			CurrPointer--;
 		}
 		else
 		{
-			if (CurrStack->Elems.at(CurrPointer)->Value < val)
-			{
-				CurrStack = CurrStack->Elems.at(CurrPointer);
-			}
-			else if (CurrStack->Elems.at(CurrPointer)->Value > val)
-			{
-				if (CurrPointer < insertion.Height)
+			if (CurrStack->Elems.at(CurrPointer)->Value != val) {
+				if (CurrStack->Elems.at(CurrPointer)->Value < val)
 				{
-					insertion.Elems.at(CurrPointer) = CurrStack->Elems.at(CurrPointer);
-					CurrStack->Elems.at(CurrPointer) = &insertion;
+					CurrStack = CurrStack->Elems.at(CurrPointer);
 				}
-				CurrPointer--;
-
+				else if (CurrStack->Elems.at(CurrPointer)->Value > val)
+				{
+					if (CurrPointer < insertion->Height)
+					{
+						insertion->Elems.at(CurrPointer) = CurrStack->Elems.at(CurrPointer);
+						CurrStack->Elems.at(CurrPointer) = insertion;
+					}
+					CurrPointer--;
+				}
+			}
+			else 
+			{
+				break;
 			}
 		}
 		if (CurrPointer < 0)
@@ -105,12 +75,13 @@ void SkipListClass::Add(int val)
 			break;
 		}
 	}
+	
 }
 
 void SkipListClass::Delete(int val)
 {
-	SkipListStack* temp;
-	SkipListStack* CurrStack = startStack;
+	SkipListStack* temp=&SkipListStack();
+	SkipListStack* CurrStack = &startStack;
 	int CurrPointer = MaxHeight - 1;
 
 	while (true)
@@ -147,7 +118,7 @@ void SkipListClass::Delete(int val)
 
 bool SkipListClass::Check(int val)
 {
-	SkipListStack* CurrStack = startStack;
+	SkipListStack* CurrStack = &startStack;
 	int CurrPointer = MaxHeight - 1;
 
 	while (true)
@@ -181,8 +152,8 @@ bool SkipListClass::Check(int val)
 
 void SkipListClass::ClearList()
 {
-	SkipListStack* next;
-	SkipListStack* curr = startStack;
+	SkipListStack* next=&SkipListStack();
+	SkipListStack* curr = &startStack;
 	while (true)
 	{
 		if (curr->Elems.at(0) != nullptr)
@@ -201,7 +172,7 @@ void SkipListClass::ClearList()
 
 void SkipListClass::Print()
 {
-	SkipListStack* currStack = startStack->Elems.at(0);
+	SkipListStack* currStack = startStack.Elems.at(0);
 	std::cout << "The Skiplist, rotated by 90 deg" << std::endl;
 
 	while (currStack->isEnd==false) 

@@ -2,19 +2,20 @@
 //
 
 #include <iostream>
+#include <cstdlib>
 #include "SkipListClass.h"
 
 int main()
 {
 	srand(time_t(NULL));
-	SkipListClass SkipList= SkipListClass(4);
-	int arr[10];
-	std::cout << "He-lo Wuuurrrld" << std::endl;
-	for (int i = 0; i < 10; i++)
+	SkipListClass SkipList= SkipListClass(5);
+	int arr[100];
+	std::cout << "Che-lo Wuuurrrld" << std::endl;
+	for (int i = 0; i < 100; i++)
 	{
-		arr[i] = (rand() % 100)+1;
+		arr[i] = (rand() % 1000)+1;
 	}
-	SkipList.Add(arr, 10);
+	SkipList.Add(arr, 100);
 	SkipList.Print();
 
 	std::cout << std::endl << "KTHXBYE" << std::endl;

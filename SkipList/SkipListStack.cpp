@@ -5,7 +5,6 @@ SkipListStack::SkipListStack(int h, int v, bool start, bool end)
 	if (!start && !end)
 	{
 		Value = v;
-
 	}
 	else
 	{
@@ -14,7 +13,7 @@ SkipListStack::SkipListStack(int h, int v, bool start, bool end)
 	isStart = start;
 	isEnd = end;
 	Height = h;
-	Elems = std::vector<SkipListStack*>(h, nullptr);
+	Elems = std::vector<SkipListStack*>(h, nullptr) ;
 }
 
 SkipListStack::SkipListStack()

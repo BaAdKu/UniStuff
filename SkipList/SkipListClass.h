@@ -5,8 +5,8 @@ class SkipListClass
 {
 public:
 	int MaxHeight;
-	SkipListStack* startStack;
-	SkipListStack* endStack;
+	SkipListStack startStack;
+	SkipListStack endStack;
 	SkipListClass(int max);
 	~SkipListClass();
 	void Add(int* values, int cap);
