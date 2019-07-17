@@ -32,13 +32,12 @@ void HeapSort::BuildHeap(int* a, int f, int l)
 	for (int i = f + (n - 2) / 2; i >= f; i--)
 	{
 		Heapify(a, f, l, i);
-
 	}
 }
 
 void HeapSort::Heapify(int* a, int f, int l, int root)
 {
-	int max;
+	int max{};
 	int left = f + (root - f) * 2 + 1;
 	int right = left + 1;
 	if (left <= l && a[left] > a[root])
@@ -64,9 +63,13 @@ void HeapSort::Heapify(int* a, int f, int l, int root)
 
 void HeapSort::Swap(int* a, int* b)
 {
-	int* t = a;
-	a = b;
-	b = t;
+	int t =a[0];
+	a[0] = b[0];
+	b[0] = t;
+}
+
+int* HeapSort::GetArray() {
+	return arr;
 }
 
 

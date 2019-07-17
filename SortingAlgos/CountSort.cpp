@@ -42,3 +42,6 @@ CountSort::CountSort(int* arr, int capacity, int maxval)
 		SecArr = 0;
 	}
 }
+int* CountSort::GetArray() {
+	return Arr;
+}

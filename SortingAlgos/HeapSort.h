@@ -10,6 +10,7 @@ private:
 	void Sort(int *a, int f, int l);
 
 public:
+	int* GetArray();
 	int* arr;
 	HeapSort(int *Array, int Capacity);
 	~HeapSort();

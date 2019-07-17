@@ -160,6 +160,7 @@
     <ClInclude Include="CountSort.h" />
     <ClInclude Include="HeapSort.h" />
     <ClInclude Include="QuickSort.h" />
+    <ClInclude Include="SortingAlgos.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -4,15 +4,16 @@
 #include <iostream>
 #include "HeapSort.h"
 #include "CountSort.h"
+#include "SortingAlgos.h"
 
 
 using namespace std;
 int main()
 {
 	int ch;
-	int Arr[200];
-	int max = 200;
-	int maxVal = 100;
+	const int max = 2000;
+	int Arr[max];
+	int maxVal = 1000000;
 	srand(time_t(NULL));
 
 
@@ -31,29 +32,13 @@ int main()
 	{
 		HeapSort heap = HeapSort(Arr, max);
 		heap.Sort();
-		for (int i = 0; i < max; i++)
-		{
-			cout << heap.arr[i] << "\t";
-			if (i % 10 == 0 && i != 0)
-			{
-				cout << "\n";
-			}
-
-		}
+		PrintArray(max, heap.GetArray());
 		break;
 	}
 	case 2: {
 		CountSort count = CountSort(Arr, max, maxVal);
 		count.Sort();
-		for (int i = 0; i < max; i++)
-		{
-			cout << count.Arr[i] << "\t";
-			if (i % 10 == 0 && i != 0)
-			{
-				cout << "\n";
-			}
-
-		}
+		PrintArray(max, count.GetArray());
 		break;
 	}
 	case 3:
@@ -63,6 +48,19 @@ int main()
 	}
 	cout << "KTHXBYE\n";
 	system("Pause");
+}
+
+void PrintArray(int max, int* array)
+{
+	for (int i = 0; i < max; i++)
+	{
+		if (i % 10 == 0)
+		{
+			cout << "\n";
+		}
+		cout << array[i] << "\t";
+
+	}
 }
 
 // Programm ausführen: STRG+F5 oder "Debuggen" > Menü "Ohne Debuggen starten"
