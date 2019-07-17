@@ -12,13 +12,15 @@ void CountSort::Sort()
 	for (int i = 0; i < Cap; i++)
 	{
 		SecArr[Arr[i]]++;
+		
 	}
-	for (int i = 0; i < Cap; i++)
+	for (int i = 0; i < Cap; )
 	{
 		if (SecArr[k]>0)
 		{
 			Arr[i] = k;
 			SecArr[k]--;
+			i++;
 		}
 		else 
 		{
@@ -34,4 +36,9 @@ CountSort::CountSort(int* arr, int capacity, int maxval)
 	Arr = arr;
 	Cap = capacity;
 	MaxVal = maxval;
+	SecArr = new int[maxval];
+	for (int i = 0; i < maxval; i++)
+	{
+		SecArr = 0;
+	}
 }

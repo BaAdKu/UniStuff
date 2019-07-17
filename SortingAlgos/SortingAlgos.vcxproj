@@ -152,14 +152,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CountSort.cpp" />
-    <ClCompile Include="HashList.cpp" />
     <ClCompile Include="HeapSort.cpp" />
     <ClCompile Include="QuickSort.cpp" />
     <ClCompile Include="SortingAlgos.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CountSort.h" />
-    <ClInclude Include="HashList.h" />
     <ClInclude Include="HeapSort.h" />
     <ClInclude Include="QuickSort.h" />
   </ItemGroup>

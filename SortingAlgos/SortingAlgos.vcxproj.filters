@@ -24,9 +24,6 @@
     <ClCompile Include="QuickSort.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="HashList.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="HeapSort.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
@@ -36,9 +33,6 @@
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="QuickSort.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="HashList.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="HeapSort.h">
