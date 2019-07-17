@@ -8,6 +8,12 @@
 
 
 using namespace std;
+
+void PrintArray(int max, int* array);
+
+
+
+
 int main()
 {
 	int ch;
